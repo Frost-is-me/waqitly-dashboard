@@ -14,8 +14,7 @@ function Analytics() {
   const Pending = useTotalPending()
   const Revenue = useRevenue()
   const AveragePrice = useAveragePrice()
-  const isArabic = document.documentElement.dir === "rtl";
-  const isRTL = document.documentElement.dir = isArabic ? "rtl" : "ltr";
+  const isRTL = document.documentElement.dir === "rtl";
   const topServices = [
     { name: "Conference Room A", bookings: 156, revenue: "$18,720" },
     { name: "Private Office", bookings: 142, revenue: "$28,400" },
@@ -25,7 +24,7 @@ function Analytics() {
   ];
   
   return (
-    <div className={`min-h-screen ${ isRTL ? "rtl" : "ltr"}`}> 
+    <div className={`min-h-screen ${isRTL ? "rtl" : "ltr"}`}> 
       <div className="flex flex-col md:flex-row h-screen">    
         {/* Main Content Area */}
         <div className={`flex-1`}>
@@ -50,7 +49,7 @@ function Analytics() {
             </div>
             <div className="bg-card p-5 rounded-lg shadow-sm border-1 border-border hover:border-accent hover:shadow-2xs">
               <div className="text-sm text-muted-foreground mb-2">{t("dashboard.Confirmed Revenue")}</div>
-              <div className="text-2xl font-bold text-card-foreground rtl:">
+              <div className="text-2xl font-bold text-card-foreground">
               {Revenue ? Revenue.toFixed(2) : "0.00"}
               <span className="rtl:inline pl-2">IQD</span>
               </div>

@@ -43,7 +43,7 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function ChartBarLabel() {
-  const {period, setPeriod} = usePeriodStore()
+  const {period} = usePeriodStore()
   const MaxDate = new Date(Math.max(...chartData.map(item => new Date(item.date).getTime())))
   const filteredData = chartData.filter((item) => {
     const date = new Date(item.date)

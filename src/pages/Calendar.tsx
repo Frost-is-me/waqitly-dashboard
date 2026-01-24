@@ -4,11 +4,10 @@ import MainCalendar from "@/components/ui/MainCalendar";
 import useTranslations from "@/hooks/useTranslations";
 function Calendar() {
   const {t} = useTranslations()
-  const isArabic = document.documentElement.dir === "rtl";
-  const isRTL = document.documentElement.dir = isArabic ? "rtl" : "ltr"
+  const isRTL = document.documentElement.dir === "rtl";
 
   return (
-    <div className={`min-h-screen ${ isRTL ? "rtl" : "ltr"}`}> 
+    <div className={`min-h-screen ${isRTL ? "rtl" : "ltr"}`}> 
       <div className="mb-4 sm:mb-5">
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">{t("dashboard.Calendar")}</h1>
         <p className="text-muted-foreground mt-1 sm:mt-2 text-sm sm:text-base">

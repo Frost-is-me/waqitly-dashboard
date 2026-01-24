@@ -15,9 +15,7 @@ import {
   ClipboardList,
   PlusSquare,
   Users,
-  BarChart3,
-  MapPin,
-  Settings,} from "lucide-react";
+  BarChart3,} from "lucide-react";
 const SideBar = () => {
     const {state} = useSidebar()
     const {t, i18n} = useTranslations()

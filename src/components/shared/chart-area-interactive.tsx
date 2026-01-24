@@ -1,5 +1,4 @@
 "use client"
-import * as React from "react"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 import { Card,CardDescription,CardHeader,CardTitle,CardContent } from "../ui/card";
 import { ChartContainer,ChartLegend,ChartLegendContent,ChartTooltip,ChartTooltipContent } from "../ui/chart";

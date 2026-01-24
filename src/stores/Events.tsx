@@ -30,7 +30,7 @@ const EventsTime = create<EventStore>((set) => ({
       { id: 7, title: "Product Demo", date: "2026/06/20", startTime: "15:00", endTime: "16:00", status: "pending" },
     ]
         try{
-            const response = await axios.get("api/event")
+            await axios.get("api/event")
             const today = new Date()
             const upcomingEvents = dummyEvents
             .filter((event : Event) => {

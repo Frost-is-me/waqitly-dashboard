@@ -10,8 +10,7 @@ import { ArrowLeft, X } from 'lucide-react';
 import axios from "axios";
 function Create_service() {
   const {t} = useTranslations()
-  const isArabic = document.documentElement.dir === "rtl";
-  const isRTL = document.documentElement.dir = isArabic ? "rtl" : "ltr";
+  const isRTL = document.documentElement.dir === "rtl";
   const [images, setImages] = useState<File[]>([])
   const [preview, setPreview] = useState<string[]>([])
   const [duration, setDuration] = useState("")
@@ -125,7 +124,7 @@ function Create_service() {
   }
 } 
   return (
-    <div className={`min-h-screen ${ isRTL ? "rtl" : "ltr"}`}> 
+    <div className={`min-h-screen ${isRTL ? "rtl" : "ltr"}`}> 
       <div className="flex flex-col md:flex-row">    
         {/* Main Content Area */}
         <div className="flex-1 space-y-8 ">

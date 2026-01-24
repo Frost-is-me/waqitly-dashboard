@@ -11,11 +11,10 @@ function Dashboard() {
   const Pending = useTotalPending()
   const Revenue = useRevenue()
   const AveragePrice = useAveragePrice()
-  const isArabic = document.documentElement.dir === "rtl";
-  const isRTL = document.documentElement.dir = isArabic ? "rtl" : "ltr";
+  const isRTL = document.documentElement.dir === "rtl";
   
   return (
-    <div className={`min-h-screen ${ isRTL ? "rtl" : "ltr"}`}>
+    <div className={`min-h-screen ${isRTL ? "rtl" : "ltr"}`}>
       <div className="mb-4 sm:mb-5">
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">{t("dashboard.Overview")}</h1>
         <p className="text-muted-foreground mt-1 sm:mt-2 text-sm sm:text-base">
@@ -37,7 +36,7 @@ function Dashboard() {
             </div>
             <div className="bg-card p-5 rounded-lg shadow-sm border-1 border-border hover:border-accent hover:shadow-2xs">
               <div className="text-sm text-muted-foreground mb-2">{t("dashboard.Confirmed Revenue")}</div>
-              <div className="text-2xl font-bold text-card-foreground rtl:">
+              <div className="text-2xl font-bold text-card-foreground">
               {Revenue ? Revenue.toFixed(2) : "0.00"}
               <span className="rtl:inline pl-2">IQD</span>
               </div>

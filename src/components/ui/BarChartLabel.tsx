@@ -2,7 +2,7 @@
 
 import { TrendingUp } from "lucide-react"
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts"
-
+import usePeriodStore from "@/stores/Period"
 import {
   Card,
   CardContent,
@@ -21,12 +21,18 @@ import type { ChartConfig } from "@/components/ui/chart"
 export const description = "A bar chart with a label"
 
 const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
+  { month: "January", desktop: 186, mobile: 80, date: "2025-01-31" },
+  { month: "February", desktop: 305, mobile: 200, date: "2025-02-29" },
+  { month: "March", desktop: 237, mobile: 120, date: "2025-03-31" },
+  { month: "April", desktop: 73, mobile: 190, date: "2025-04-30" },
+  { month: "May", desktop: 209, mobile: 130, date: "2025-05-31" },
+  { month: "June", desktop: 214, mobile: 140, date: "2025-06-30" },
+  { month: "July", desktop: 198, mobile: 160, date: "2025-07-31" },
+  { month: "August", desktop: 267, mobile: 180, date: "2025-08-31" },
+  { month: "September", desktop: 312, mobile: 210, date: "2025-09-30" },
+  { month: "October", desktop: 278, mobile: 170, date: "2025-10-31" },
+  { month: "November", desktop: 245, mobile: 190, date: "2025-11-30" },
+  { month: "December", desktop: 329, mobile: 220, date: "2025-12-31" }
 ]
 
 const chartConfig = {
@@ -37,6 +43,25 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function ChartBarLabel() {
+  const {period, setPeriod} = usePeriodStore()
+  const MaxDate = new Date(Math.max(...chartData.map(item => new Date(item.date).getTime())))
+  const filteredData = chartData.filter((item) => {
+    const date = new Date(item.date)
+    let daysToSubtract = 7
+    if (period === "All") {
+      return true
+    }
+    if (period === "360d") {
+      daysToSubtract = 360
+    } else if (period === "90d") {
+      daysToSubtract = 90
+    } else if (period === "30d") {
+      daysToSubtract = 30
+    }
+    const startDate = new Date(MaxDate)
+    startDate.setDate(startDate.getDate() - daysToSubtract)
+    return date >= startDate
+  })
   return (
     <Card className="h-full flex-1 hover:border-accent">
       <CardHeader>
@@ -47,7 +72,7 @@ export function ChartBarLabel() {
         <ChartContainer className="h-full w-full" config={chartConfig}>
           <BarChart
             accessibilityLayer
-            data={chartData}
+            data={filteredData}
             margin={{
               top: 20,
             }}

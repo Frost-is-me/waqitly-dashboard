@@ -70,14 +70,6 @@ return (
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild className="text-sidebar-foreground hover:bg-brand-orange hover:text-white">
-                  <Link to="/Locations" className="text-sidebar-foreground font-medium">
-                    <MapPin />
-                    <span>{t("dashboard.Locations")}</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild className="text-sidebar-foreground hover:bg-brand-orange hover:text-white">
                   <Link to="/Analytics" className="text-sidebar-foreground font-medium">
                     <BarChart3 />
                     <span>{t("dashboard.Analytics")}</span>
@@ -93,12 +85,6 @@ return (
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild className="text-sidebar-foreground hover:bg-brand-orange hover:text-white">
-                  <Link to="#" className="text-sidebar-foreground font-medium">
-                    <Settings />
-                    <span>{t("dashboard.Settings")}</span>
-                  </Link>
-                </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarContent>

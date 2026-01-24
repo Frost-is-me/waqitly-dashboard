@@ -2,7 +2,8 @@
 
 import { TrendingUp } from "lucide-react"
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis } from "recharts"
-
+import usePeriodStore from "@/stores/Period"
+import useTranslations from "@/hooks/useTranslations"
 import {
   Card,
   CardContent,
@@ -21,12 +22,18 @@ import type { ChartConfig } from "@/components/ui/chart"
 export const description = "A bar chart with a custom label"
 
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
+  { month: "January", desktop: 186, mobile: 80, date: "2025-01-31" },
+  { month: "February", desktop: 305, mobile: 200, date: "2025-02-29" },
+  { month: "March", desktop: 237, mobile: 120, date: "2025-03-31" },
+  { month: "April", desktop: 73, mobile: 190, date: "2025-04-30" },
+  { month: "May", desktop: 209, mobile: 130, date: "2025-05-31" },
+  { month: "June", desktop: 214, mobile: 140, date: "2025-06-30" },
+  { month: "July", desktop: 198, mobile: 160, date: "2025-07-31" },
+  { month: "August", desktop: 267, mobile: 180, date: "2025-08-31" },
+  { month: "September", desktop: 312, mobile: 210, date: "2025-09-30" },
+  { month: "October", desktop: 278, mobile: 170, date: "2025-10-31" },
+  { month: "November", desktop: 245, mobile: 190, date: "2025-11-30" },
+  { month: "December", desktop: 329, mobile: 220, date: "2025-12-31" }
 ]
 
 const chartConfig = {
@@ -43,18 +50,40 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
+
 export function ChartBarCustomLabel() {
+  const {i18n} = useTranslations()
+  const {period, setPeriod} = usePeriodStore()
+  const MaxDate = new Date(Math.max(...chartData.map(item => new Date(item.date).getTime())))
+  const filteredData = chartData.filter((item) => {
+    const date = new Date(item.date)
+    let daysToSubtract = 7
+    if (period === "All") {
+      return true
+    }
+    if (period === "360d") {
+      daysToSubtract = 360
+    } else if (period === "90d") {
+      daysToSubtract = 90
+    } else if (period === "30d") {
+      daysToSubtract = 30
+    }
+    const startDate = new Date(MaxDate)
+    startDate.setDate(startDate.getDate() - daysToSubtract)
+    return date >= startDate
+  })
+  const isRTL = i18n.language === "ar"
   return (
-    <Card className="h-full hover:border-accent">
+    <Card className="h-full hover:border-accent" dir={isRTL ? "rtl" : "ltr"}>
       <CardHeader>
         <CardTitle>Bar Chart - Custom Label</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
-      <CardContent className="flex-1 min-h-[300px]">
+      <CardContent className="flex-1 min-h-[250px] sm:min-h-[300px]">
         <ChartContainer config={chartConfig} className="h-full w-full">
           <BarChart
             accessibilityLayer
-            data={chartData}
+            data={filteredData}
             layout="vertical"
             margin={{
               right: 16,
@@ -84,14 +113,14 @@ export function ChartBarCustomLabel() {
               <LabelList
                 dataKey="month"
                 position="insideLeft"
-                offset={8}
+                 offset={isRTL ? 60 : 8}
                 className="fill-(--color-label)"
                 fontSize={12}
               />
               <LabelList
                 dataKey="desktop"
                 position="right"
-                offset={8}
+                 offset={isRTL ? 25 : 8}
                 className="fill-foreground"
                 fontSize={12}
               />

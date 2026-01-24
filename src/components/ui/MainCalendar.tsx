@@ -11,16 +11,15 @@ import {
 } from "@/components/ui/card"
 import useTranslations from "@/hooks/useTranslations"
 import useDates from "@/stores/CalendarDate"
-import i18n from "@/plugins/i18n"
 import {ar,enUS} from "date-fns/locale"
 export default function MainCalendar() {
   const {date,month,setDate,setMonth,Today} = useDates()
-  const {t} = useTranslations()
+  const {t, i18n} = useTranslations()
   return (
     <Card className="w-full shadow-lg border-1 bg-card hover:border-accent">
-      <CardHeader className="text-center pb-4">
-        <CardTitle className="text-2xl font-bold text-muted-foreground">{t("calendar.Appointments")}</CardTitle>
-        <CardDescription className="text-muted-foreground text-lg">{t("calendar.Find a date")}</CardDescription>
+      <CardHeader className="text-center pb-3 sm:pb-4 px-4 sm:px-6 pt-4 sm:pt-6">
+        <CardTitle className="text-xl sm:text-2xl font-bold text-muted-foreground">{t("calendar.Appointments")}</CardTitle>
+        <CardDescription className="text-muted-foreground text-base sm:text-lg">{t("calendar.Find a date")}</CardDescription>
         <Button
           size="sm"
           variant="outline"
@@ -30,9 +29,9 @@ export default function MainCalendar() {
           {t("calendar.Today")}
         </Button>
       </CardHeader>
-      <CardContent className="flex justify-center p-6">
+      <CardContent className="flex justify-center p-3 sm:p-6">
         {[0].map((offset) => (
-          <div key={offset} className="border border-border rounded-xl p-4 bg-card shadow-md flex justify-center">
+          <div key={offset} className="border border-border rounded-xl p-2 sm:p-4 bg-card shadow-md flex justify-center">
             <Calendar
               mode="single"
               required

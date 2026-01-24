@@ -1,6 +1,6 @@
-
+import useTranslations from "../hooks/useTranslations";
 function Locations() {
-
+  const {t} = useTranslations()
   const isArabic = document.documentElement.dir === "rtl";
   const isRTL = document.documentElement.dir = isArabic ? "rtl" : "ltr";
   

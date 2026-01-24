@@ -494,21 +494,21 @@ export function DataTable({
       className="w-full flex-col justify-start gap-6 pt-8 pb-4 border-1 rounded-md bg-card"
     >
       
-      <div className="relative flex items-center justify-end px-4 lg:px-6" >
-        <div className="absolute start-8 font-semibold text-3xl text-muted-foreground rounded-2xl p-2.5">
+      <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-3 sm:gap-2 px-3 sm:px-4 lg:px-6" >
+        <div className="w-full sm:absolute sm:start-8 font-semibold text-lg sm:text-3xl text-muted-foreground rounded-2xl p-2 sm:p-2.5">
             <Input 
-            className="flex min-w-xs"
+            className="flex w-full sm:min-w-xs"
             placeholder="Search Reservation name"
             value={(table.getColumn("name")?.getFilterValue() as string ) ?? ""}
             onChange={(event) => table.getColumn("name")?.setFilterValue(event.target.value)}
             />
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           <Select 
           value={(table.getColumn("status")?.getFilterValue() as string) ?? "all"}
           onValueChange={(value) => table.getColumn("status")?.setFilterValue(value === "all" ? "" : value)}
           >
-            <SelectTrigger size="sm" className="w-32 [&>svg]:hidden hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent dark:hover:text-accent-foreground font-semibold border-1 border-border">
+            <SelectTrigger size="sm" className="w-full sm:w-32 [&>svg]:hidden hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent dark:hover:text-accent-foreground font-semibold border-1 border-border">
               <SelectValue placeholder="status"/>
               <SelectIcon>
                 <IconChevronDown className="hover:text-accent-foreground "/>
@@ -672,9 +672,9 @@ export function DataTable({
             </Table>
           </DndContext>
         </div>
-        <div className="flex items-center justify-between px-4">
-          <div className="flex-1" />
-          <div className="flex w-full items-center gap-8 lg:w-fit">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-0 px-3 sm:px-4">
+          <div className="flex-1 hidden sm:block" />
+          <div className="flex w-full items-center justify-center sm:justify-end gap-4 sm:gap-8 lg:w-fit">
             <div className="hidden items-center gap-2 lg:flex">
               <Label htmlFor="rows-per-page" className="text-sm font-medium">
                 {t("tabel.Rows")}

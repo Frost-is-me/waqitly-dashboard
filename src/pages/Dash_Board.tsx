@@ -16,17 +16,17 @@ function Dashboard() {
   
   return (
     <div className={`min-h-screen ${ isRTL ? "rtl" : "ltr"}`}>
-      <div className="mb-5">
-        <h1 className="text-3xl font-bold tracking-tight">Overview</h1>
-        <p className="text-muted-foreground mt-2">
-          View and manage your bookings, customers, and revenue all in one place.
+      <div className="mb-4 sm:mb-5">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">{t("dashboard.Overview")}</h1>
+        <p className="text-muted-foreground mt-1 sm:mt-2 text-sm sm:text-base">
+          {t("dashboard.Overview description")}
         </p>
       </div>
-      <div className="flex flex-col md:flex-row h-screen">    
+      <div className="flex flex-col md:flex-row min-h-screen">    
         {/* Main Content Area */}
         <div className={`flex-1 overflow-y-auto`}>
           {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8 m-2 transition-all duration-300">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8 m-1 sm:m-2 transition-all duration-300">
             <div className="bg-card p-5 rounded-lg shadow-sm border-1 border-border hover:border-accent hover:shadow-2xs">
               <div className="text-sm text-muted-foreground mb-2">{t("dashboard.Total Bookings")}</div>
               <div className="text-2xl font-bold text-card-foreground">{TotalBooking}</div>
@@ -51,16 +51,16 @@ function Dashboard() {
             </div>
           </div>
     
-            <div className="mb-6 ">
+            <div className="mb-6 sm:mb-8">
               <ChartAreaInteractive />
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 m-2">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 m-1 sm:m-2">
               
-               <div className="bg-card p-6 rounded-lg shadow-sm border border-border hover:border-accent">
-                <h2 className="text-xl font-semibold text-card-foreground mb-4">{t("dashboard.Customer Rating")}</h2>
+               <div className="bg-card p-4 sm:p-6 rounded-lg shadow-sm border border-border hover:border-accent">
+                <h2 className="text-lg sm:text-xl font-semibold text-card-foreground mb-3 sm:mb-4">{t("dashboard.Customer Rating")}</h2>
     
-                <div className="flex items-center mb-4">
-                  <div className="flex text-accent text-2xl">
+                <div className="flex items-center mb-3 sm:mb-4">
+                  <div className="flex text-accent text-xl sm:text-2xl">
                     <span>★</span>
                     <span>★</span>
                     <span>★</span>

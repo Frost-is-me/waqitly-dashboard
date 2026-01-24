@@ -1,8 +1,8 @@
-
+import useTranslations from "../hooks/useTranslations";
 import { DataTable } from "@/components/ui/DataTable";
 
 function Reservations() {
-
+  const {t} = useTranslations()
   const isArabic = document.documentElement.dir === "rtl";
   const isRTL = document.documentElement.dir = isArabic ? "rtl" : "ltr";
   const tableData = [
@@ -59,16 +59,16 @@ function Reservations() {
 ]
   return (
     <div className={`min-h-screen  ${ isRTL ? "rtl" : "ltr"}`}>
-      <div className="mb-5">
-        <h1 className="text-3xl font-bold tracking-tight">Reservations</h1>
-        <p className="text-muted-foreground mt-2">
-          View your reservations and manage your bookings.
+      <div className="mb-4 sm:mb-5">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">{t("dashboard.Reservations")}</h1>
+        <p className="text-muted-foreground mt-1 sm:mt-2 text-sm sm:text-base">
+          {t("dashboard.Reservations description")}
         </p>
       </div>
-      <div className="flex flex-col md:flex-row h-screen">
+      <div className="flex flex-col md:flex-row min-h-screen">
         {/* Main Content Area */}
         <div className="flex-1 overflow-y-auto">
-          <div className="m-3 mt-2">
+          <div className="m-2 sm:m-3 mt-2">
             <DataTable data={tableData} />
           </div>
         </div>

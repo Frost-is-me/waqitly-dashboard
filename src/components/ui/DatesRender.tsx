@@ -397,7 +397,7 @@ return (
             {isArabic ? date.toLocaleDateString("ar",{month: 'long'}) : date.toLocaleDateString("en-US",{month: 'long',})}
         </h3>
         <div className="overflow-x-auto">
-            <table className="w-full">
+          <table className="w-full">
                 <thead>
                     <tr className="border-b-1 border-border">
                         <th className="text-left rtl:text-right pl-3 pb-3 ">{t("tabel.Name")}</th>
@@ -412,7 +412,7 @@ return (
                 {Matching.map((item) => (
                     <Drawer key={item.id} direction={isMobile ? "bottom" : "right"}>
                       <DrawerTrigger asChild>
-                    <tr className=" border-b mt-2 border-border hover:bg-accent hover:cursor-pointer p-4 rounded-2xl mb-2">
+                    <tr className=" border-b mt-2 border-border hover:text-accent-foreground hover:bg-accent hover:cursor-pointer p-4 rounded-2xl mb-2">
                         <td className="py-3 px-3">{item.name}</td>
                         <td className="py-3 px-3">{item.space}</td>
                         <td className="py-3">

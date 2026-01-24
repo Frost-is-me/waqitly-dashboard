@@ -91,6 +91,33 @@ mock.onPut(`/reservations/1`).reply(200, {
   },
 ]
 
+
+});
+
+mock.onGet("api/event").reply(200, {
+    Reservation: {
+        Reservations1: {
+            status: "done",
+            TotalPrice : 50000,
+            Date : "12-3-2025",
+            StartTime : 4.30,
+            EndTime : 6.30,},
+
+        Reservations2: {
+            status: "reserved",
+            TotalPrice : 100000,
+            Date : "11-5-2025",
+            StartTime : 4.30,
+            EndTime : 6.30,},
+
+        Reservations3: {
+            status: "pending",
+            TotalPrice : 30000,
+            Date : "4-3-2025",
+            StartTime : 4.30,
+            EndTime : 6.30,} 
+    }
+
 });
 
 export default mock;

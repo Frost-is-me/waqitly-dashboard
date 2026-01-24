@@ -7,6 +7,7 @@ import { ChartBarLabel } from "@/components/ui/BarChartLabel";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { ChartAreaInteractive } from "@/components/shared/chart-area-interactive";
 import { ChartPieLabel } from "@/components/ui/chart-pie-label";
+import DropMenu from "@/components/ui/DropDown";
 function Analytics() {
   const {t} = useTranslations()
   const TotalBooking = useTotalBooking()
@@ -28,8 +29,17 @@ function Analytics() {
       <div className="flex flex-col md:flex-row h-screen">    
         {/* Main Content Area */}
         <div className={`flex-1`}>
+          <div className="flex mb-4 sm:mb-5">
+            <div>
+              <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">{t("dashboard.Analytics")}</h1>
+              <p className="text-muted-foreground mt-1 sm:mt-2 text-sm sm:text-base">
+                {t("dashboard.Analytics description")}
+              </p>
+            </div>
+            
+          </div>
           {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8 m-2 transition-all duration-300">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-5 m-1 sm:m-2 transition-all duration-300">
             <div className="bg-card p-5 rounded-lg shadow-sm border-1 border-border hover:border-accent hover:shadow-2xs">
               <div className="text-sm text-muted-foreground mb-2">{t("dashboard.Total Bookings")}</div>
               <div className="text-2xl font-bold text-card-foreground">{TotalBooking}</div>
@@ -53,11 +63,14 @@ function Analytics() {
               </div>
             </div>
           </div>
-         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 m-2 mb-8">
-              <div className="min-h-[400px] max-h-[600px]  ">
+          <div className="flex justify-end mb-4 sm:mb-5">
+              <DropMenu />
+          </div> 
+         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 m-1 sm:m-2 mb-6 sm:mb-8">
+              <div className="min-h-[300px] sm:min-h-[400px] max-h-[500px] sm:max-h-[600px]">
                 <ChartBarCustomLabel />
               </div>
-              <Card className="min-h-[400px] max-h-[600px] flex flex-col overflow-auto hover:border-accent">
+              <Card className="min-h-[300px] sm:min-h-[400px] max-h-[500px] sm:max-h-[600px] flex flex-col overflow-auto hover:border-accent">
               <CardHeader>
                 <CardTitle>Top Performing Services</CardTitle>
                 <CardDescription>Most booked services this period</CardDescription>
@@ -82,14 +95,14 @@ function Analytics() {
               </CardContent>
             </Card>
         </div>
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <ChartAreaInteractive />
         </div>
-        <div className="flex flex-row gap-4 m-2 pb-10">
-            <div className="max-w-[500px] max-h-[500px] flex-1">
+        <div className="flex flex-col lg:flex-row gap-4 m-1 sm:m-2 pb-6 sm:pb-10">
+            <div className="w-full lg:max-w-[500px] max-h-[400px] sm:max-h-[500px] flex-1">
               <ChartPieLabel />
             </div> 
-            <div className="max-h-[500px] flex-1">
+            <div className="w-full max-h-[400px] sm:max-h-[500px] flex-1">
               <ChartBarLabel />
             </div> 
             

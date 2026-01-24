@@ -1,4 +1,4 @@
-
+import useTranslations from "../hooks/useTranslations";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,7 +9,7 @@ import { useState, useRef, useEffect} from "react"
 import { ArrowLeft, X } from 'lucide-react';
 import axios from "axios";
 function Create_service() {
-
+  const {t} = useTranslations()
   const isArabic = document.documentElement.dir === "rtl";
   const isRTL = document.documentElement.dir = isArabic ? "rtl" : "ltr";
   const [images, setImages] = useState<File[]>([])
@@ -130,47 +130,47 @@ function Create_service() {
         {/* Main Content Area */}
         <div className="flex-1 space-y-8 ">
         {!showForm ? (
-          <div className="w-full max-w-none px-4">
-            <div className="flex justify-between items-center mb-10">
+          <div className="w-full max-w-none px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-10 gap-4">
               <div>
-                <h1 className="text-3xl font-bold tracking-tight">Your Spaces</h1>
-                <p className="text-muted-foreground mt-4 ">Manage your bookable spaces and services</p>
+                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">{t("dashboard.Create a Service")}</h1>
+                <p className="text-muted-foreground mt-1 sm:mt-2 text-sm sm:text-base">{t("dashboard.Create a Service description")}</p>
               </div>
               <Button
                 variant="outline"
                 onClick={() => setShowForm(true)} 
-                className="bg-brand-blue text-white border-1 dark:border-muted-foreground border-border dark:hover:bg-accent px-10 py-4 rounded-2xl text-lg "
+                className="bg-brand-blue text-white border-1 dark:border-muted-foreground border-border dark:hover:bg-accent px-6 sm:px-10 py-3 sm:py-4 rounded-2xl text-base sm:text-lg w-full sm:w-auto"
               >
                 + Add New Space
               </Button>
             </div>
-            <div className="grid gap-10 grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4">
+            <div className="grid gap-6 sm:gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
               {spaces.map((space: any) => (
-                <Card key={space.id} className="cursor-pointer bg-card border-2 border-border hover:border-accent hover:shadow-2xl transition-all duration-300 rounded-3xl overflow-hidden min-h-[500px]">
-                  <CardContent className="p-10 h-full flex flex-col">
-                    <h3 className="font-bold text-3xl text-card-foreground mb-8 text-center">{space.name}</h3>
-                    <div className="grid grid-cols-2 gap-4 mb-8 flex-grow-0">
+                <Card key={space.id} className="cursor-pointer bg-card border-2 border-border hover:border-accent hover:shadow-2xl transition-all duration-300 rounded-3xl overflow-hidden min-h-[450px] sm:min-h-[500px]">
+                  <CardContent className="p-6 sm:p-10 h-full flex flex-col">
+                    <h3 className="font-bold text-2xl sm:text-3xl text-card-foreground mb-6 sm:mb-8 text-center">{space.name}</h3>
+                    <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8 flex-grow-0">
                       {space.images.slice(0, 2).map((img: string, index: number) => (
                         <img 
                           key={index}
-                          className="w-full h-60 object-cover rounded-2xl"
+                          className="w-full h-48 sm:h-60 object-cover rounded-2xl"
                           src={img} 
                           alt={`Space ${index + 1}`} 
                         />
                       ))}
                     </div>
-                    <div className="space-y-6 flex-grow">
-                      <div className="flex justify-between items-center">
-                        <span className="text-2xl font-bold text-brand-blue">IQD {space.price}/hr</span>
-                        <span className="text-muted-foreground bg-muted px-5 py-3 rounded-full text-lg font-semibold">
+                    <div className="space-y-4 sm:space-y-6 flex-grow">
+                      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <span className="text-xl sm:text-2xl font-bold text-brand-blue">IQD {space.price}/hr</span>
+                        <span className="text-muted-foreground bg-muted px-4 sm:px-5 py-2 sm:py-3 rounded-full text-base sm:text-lg font-semibold">
                           {space.capacity} people
                         </span>
                       </div>
-                      <p className="text-muted-foreground text-lg leading-relaxed">{space.description}</p>
+                      <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">{space.description}</p>
                     </div>
                     <Button 
                       variant="outline" 
-                      className="w-full mt-8 border-2 border-border text-muted-foreground dark:hover:bg-accent text-xl font-semibold py-4 rounded-2xl cursor-pointer"
+                      className="w-full mt-6 sm:mt-8 border-2 border-border text-muted-foreground dark:hover:bg-accent text-lg sm:text-xl font-semibold py-3 sm:py-4 rounded-2xl cursor-pointer"
                       onClick={() => {setSelectedSpace(space); setShowForm(true)}}
                     >
                       Edit Space
@@ -181,19 +181,19 @@ function Create_service() {
             </div>
           </div>
         ) : (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="px-4 sm:px-6 lg:px-8">
           <div className="flex justify-start mb-4">
           <Button variant="outline" className="bg-brand-blue text-white dark:hover:bg-accent dark:hover:text-accent-foreground" type="button" onClick={() => {setShowForm(false); setSelectedSpace(null)}}>
             <ArrowLeft /> Go back
           </Button>
           </div>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
           <Card className="md:col-span-2 bg-card">
-            <CardHeader className="bg-card">
-              <CardTitle>Space Information</CardTitle>
-              <CardDescription>Essential details about your space</CardDescription>
+            <CardHeader className="bg-card px-4 sm:px-6 pt-4 sm:pt-6">
+              <CardTitle className="text-xl sm:text-2xl">Space Information</CardTitle>
+              <CardDescription className="text-sm sm:text-base">Essential details about your space</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4 bg-card">
+            <CardContent className="space-y-4 bg-card px-4 sm:px-6 pb-4 sm:pb-6">
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="name">Space Name</Label>
@@ -242,7 +242,7 @@ function Create_service() {
               </div>
               <div className="space-y-2 md:col-span-2">
                   {preview.length > 0 && (
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-2">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mt-2">
                       {preview.map((preview, index) => (
                         <div key={index} className="relative aspect-square">
                           <img src={preview} alt={`Preview ${index + 1}`} className="w-full h-full object-cover rounded-lg"/>
@@ -285,8 +285,8 @@ function Create_service() {
                 </Select>
               </div>
             </CardContent>
-            <div className="flex justify-end pr-4">
-              <Button type="submit" className="bg-brand-blue hover:bg-accent hover:text-accent-foreground">Create Service</Button>
+            <div className="flex justify-end px-4 sm:px-6 pb-4 sm:pb-6">
+              <Button type="submit" className="bg-brand-blue hover:bg-accent hover:text-accent-foreground w-full sm:w-auto">Create Service</Button>
             </div>
           </Card>
           </div>

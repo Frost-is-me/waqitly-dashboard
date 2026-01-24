@@ -7,10 +7,10 @@ const Header = () => {
     const { theme, setTheme } = useTheme();
     return (
         <header className="sticky top-0 z-50 flex w-full items-center justify-between bg-background/80 backdrop-blur-md border-b border-border
-         theme-transition " style={{padding: "1.7rem", height:"64.8px"}}>
+         theme-transition px-4 sm:px-6 lg:px-8 py-3 sm:py-4 h-auto sm:h-[64.8px]">
             
             <SidebarTrigger className="-ml-1" />
-            <div className="flex h-16 items-center px-4 gap-4">
+            <div className="flex h-16 items-center gap-2 sm:gap-4">
                 <Button
                     variant="ghost"
                     size="icon"

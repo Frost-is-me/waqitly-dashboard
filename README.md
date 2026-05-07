@@ -1,69 +1,99 @@
-# React + TypeScript + Vite
+# 🚀 Waqitly Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, modern, and feature-rich admin dashboard built with **React 19**, **TypeScript**, and **Vite**. Designed for seamless service management, reservations tracking, and team coordination.
 
-Currently, two official plugins are available:
+![Dashboard Preview](https://via.placeholder.com/1200x600?text=Waqitly+Dashboard+Preview)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Key Features
 
-## Expanding the ESLint configuration
+- 🌓 **Dark & Light Mode**: Built-in theme switching using `next-themes`.
+- 🌍 **Multi-language & RTL Support**: Seamless switching between English and Arabic (RTL) using `i18next`.
+- 📊 **Dynamic Analytics**: Interactive data visualization powered by `Recharts`.
+- 📅 **Reservation Management**: Comprehensive system to track and manage bookings.
+- 👥 **Team Management**: Interface for managing staff roles and permissions.
+- 🏗️ **Service Creation**: Intuitive workflow for adding and configuring new services.
+- 🖱️ **Drag & Drop UI**: Enhanced user experience with `@dnd-kit`.
+- ⚡ **Optimized Performance**: Built on Vite for lightning-fast HMR and build times.
+- 📱 **Fully Responsive**: Mobile-first design using Tailwind CSS v4.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tech Stack
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Frontend Framework**: [React 19](https://react.dev/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **Data Fetching**: [TanStack Query (React Query)](https://tanstack.com/query/latest)
+- **UI Components**: [Radix UI](https://www.radix-ui.com/), [Lucide React](https://lucide.dev/), [Tabler Icons](https://tabler.io/icons)
+- **Routing**: [React Router v7](https://reactrouter.com/)
+- **Charts**: [Recharts](https://recharts.org/)
+- **Tables**: [TanStack Table](https://tanstack.com/table/latest)
+- **Forms & Validation**: [Zod](https://zod.dev/)
+- **Internationalization**: [i18next](https://www.i18next.com/)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 📂 Project Structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+src/
+├── app/            # App-level configurations
+├── components/     # Reusable UI components (Shared, Pages, UI)
+├── hooks/          # Custom React hooks
+├── lib/            # External library configurations (Axios, etc.)
+├── locales/        # Translation files (EN, AR)
+├── pages/          # Individual dashboard pages
+├── services/       # API service layers
+├── stores/         # Zustand state stores
+├── styles/         # Global styles and Tailwind configs
+├── types/          # TypeScript interfaces and types
+└── utils/          # Helper functions
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Node.js**: v18.x or higher
+- **Package Manager**: `pnpm` (recommended) or `npm`
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Frost-is-me/waqitly-frontend-dashboard-my-local-version.git
+   ```
+
+2. Navigate to the project directory:
+   ```bash
+   cd waqitly-frontend-dashboard-my-local-version
+   ```
+
+3. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+
+### Running Locally
+
+To start the development server:
+```bash
+pnpm run dev
 ```
+The application will be available at `http://localhost:5173`.
+
+### Building for Production
+
+To create an optimized production build:
+```bash
+pnpm run build
+```
+
+## 📜 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+---
+Developed with ❤️ by [Frost-is-me](https://github.com/Frost-is-me)

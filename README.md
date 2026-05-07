@@ -2,7 +2,7 @@
 
 A high-performance, modern, and feature-rich admin dashboard built with **React 19**, **TypeScript**, and **Vite**. Designed for seamless service management, reservations tracking, and team coordination.
 
-![Dashboard Preview](https://via.placeholder.com/1200x600?text=Waqitly+Dashboard+Preview)
+![Dashboard Preview](docs/preview.png)
 
 ## ✨ Key Features
 
